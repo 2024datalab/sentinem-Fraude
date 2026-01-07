@@ -1,12 +1,11 @@
 services:
   # Backend Service (Docker)
   - type: web
-    name: fraud-detection-backend
+    name: sentinelle-fraude-backend
     env: docker
     dockerContext: .
     dockerfilePath: Dockerfile.backend
     plan: free
-    region: frankfurt
     envVars:
       - key: GROQ_API_KEY
         sync: false
@@ -15,9 +14,8 @@ services:
 
   # Frontend Service (Docker avec Nginx)
   - type: web
-    name: fraud-detection-frontend
+    name: sentinelle-fraude-frontend
     env: docker
     dockerContext: .
     dockerfilePath: Dockerfile.frontend
     plan: free
-    region: frankfurt
