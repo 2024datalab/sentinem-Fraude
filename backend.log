@@ -1,0 +1,7 @@
+INFO:     Started server process [2139921]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+[*] Model loaded from /home/urek/fraud_detection/outputs/fraud_model.cbm
+[*] Dataset loaded: (10000, 30)
+INFO:     127.0.0.1:39842 - "GET /health HTTP/1.1" 200 OK

@@ -1,0 +1,29 @@
+services:
+  # Backend Service (Docker)
+  - type: web
+    name: fraud-detection-backend
+    env: docker
+    dockerContext: .
+    dockerfilePath: Dockerfile.backend
+    plan: free
+    region: frankfurt # Or your preferred region
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false # You will set this in Render UI
+      - key: PYTHONPATH
+        value: /app
+
+  # Frontend Service (Static Site)
+  - type: static
+    name: fraud-detection-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/dist
+    routes:
+      # Rewrites /api/* to the Backend URL (replaces Nginx proxy in static hosting)
+      - type: rewrite
+        source: /api/*
+        destination: https://fraud-detection-backend.onrender.com/*
+    envVars:
+      - key: NODE_VERSION
+        value: 20

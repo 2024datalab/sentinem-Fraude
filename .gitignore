@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+backend/.env
+dist/
+build/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Data & Models (Optional: keep if you want them on GitHub, but CSV is large)
+creditcard_2023.csv
+catboost_info/
+
+# OS
+.DS_Store
+Thumbs.db
