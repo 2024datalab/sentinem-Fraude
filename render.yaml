@@ -13,14 +13,9 @@ services:
       - key: PYTHONPATH
         value: /app
 
-  # Frontend Service (Docker)
-  - type: web
+  # Frontend Service (Static Site)
+  - type: static
     name: fraud-detection-frontend
-    env: docker
-    dockerContext: .
-    dockerfilePath: Dockerfile.frontend
-    plan: free
-    region: frankfurt
-    envVars:
-      - key: PORT
-        value: 3000
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
