@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY backend/ ./backend/
 COPY outputs/ ./outputs/
-# Copy detection.py if needed (it might be used by main.py)
+COPY creditcard_sample.csv .
 COPY detection.py .
 
 # Environment variables

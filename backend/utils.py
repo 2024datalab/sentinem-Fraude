@@ -9,7 +9,7 @@ class FraudModelManager:
     """
     Handles model loading and prediction for the API.
     """
-    def __init__(self, model_path="/home/urek/fraud_detection/outputs/fraud_model.cbm", dataset_path="/home/urek/fraud_detection/creditcard_2023.csv"):
+    def __init__(self, model_path="outputs/fraud_model.cbm", dataset_path="creditcard_sample.csv"):
         self.model_path = model_path
         self.dataset_path = dataset_path
         self.model = None
@@ -32,7 +32,7 @@ class FraudModelManager:
 
     def get_metrics(self):
         # In a real app, this would be read from a database or file
-        metrics_path = "/home/urek/fraud_detection/outputs/metrics.pkl"
+        metrics_path = "outputs/metrics.pkl"
         if os.path.exists(metrics_path):
             return joblib.load(metrics_path)
         return {"roc_auc": 0.9991, "precision": 0.67, "recall": 0.96, "f1": 0.79}

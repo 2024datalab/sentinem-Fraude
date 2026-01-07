@@ -14,11 +14,11 @@ services:
         value: /app
 
   # Frontend Service (Static Site)
-  - type: static
+  - type: web
     name: fraud-detection-frontend
     env: static
     buildCommand: cd frontend && npm install && npm run build
-    publishPath: frontend/dist
+    staticPublishPath: frontend/dist
     routes:
       # Rewrites /api/* to the Backend URL (replaces Nginx proxy in static hosting)
       - type: rewrite
