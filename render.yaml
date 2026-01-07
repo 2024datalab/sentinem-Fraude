@@ -6,15 +6,14 @@ services:
     dockerContext: .
     dockerfilePath: Dockerfile.backend
     plan: free
-    region: frankfurt # Or your preferred region
+    region: frankfurt
     envVars:
       - key: GROQ_API_KEY
-        sync: false # You will set this in Render UI
+        sync: false
       - key: PYTHONPATH
         value: /app
 
-  # Frontend Service (Static Site)
-  - type: static_site
-    name: fraud-detection-frontend
+static_sites:
+  - name: fraud-detection-frontend
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    publishPath: frontend/dist
