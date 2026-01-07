@@ -6,10 +6,10 @@ services:
     dockerContext: .
     dockerfilePath: Dockerfile.backend
     plan: free
-    region: frankfurt
+    region: frankfurt # Or your preferred region
     envVars:
       - key: GROQ_API_KEY
-        sync: false
+        sync: false # You will set this in Render UI
       - key: PYTHONPATH
         value: /app
 
@@ -18,4 +18,12 @@ services:
     name: fraud-detection-frontend
     env: static
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    publishPath: frontend/dist
+    routes:
+      # Rewrites /api/* to the Backend URL (replaces Nginx proxy in static hosting)
+      - type: rewrite
+        source: /api/*
+        destination: https://fraud-detection-backend.onrender.com/*
+    envVars:
+      - key: NODE_VERSION
+        value: 20
