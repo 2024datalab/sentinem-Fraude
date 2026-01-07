@@ -19,11 +19,4 @@ services:
     env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
-    routes:
-      # Rewrites /api/* to the Backend URL (replaces Nginx proxy in static hosting)
-      - type: rewrite
-        source: /api/*
-        destination: https://fraud-detection-backend.onrender.com/*
-    envVars:
-      - key: NODE_VERSION
-        value: 20
+    staticPublishPath: frontend/dist

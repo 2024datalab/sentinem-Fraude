@@ -45,7 +45,12 @@ class ExplainRequest(BaseModel):
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy", "model_loaded": manager.model is not None}
+    return {
+        "status": "healthy", 
+        "model_loaded": manager.model is not None,
+        "dataset_loaded": manager.df is not None,
+        "dataset_rows": len(manager.df) if manager.df is not None else 0
+    }
 
 @app.get("/metrics")
 def get_metrics():
