@@ -14,8 +14,7 @@ services:
         value: /app
 
   # Frontend Service (Static Site)
-  - type: static
+  - type: static_site
     name: fraud-detection-frontend
-    env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
